@@ -1,0 +1,8 @@
+.main {
+    display: flex;
+    justify-content: center;
+    background-color: darkkhaki;
+}
+div {
+    padding: 10px;
+}
