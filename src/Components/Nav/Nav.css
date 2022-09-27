@@ -6,3 +6,12 @@
 div {
     padding: 10px;
 }
+.seagreen.active {
+    color: rgb(46, 139, 87);
+}
+.lime.active {
+    color: rgb(34, 139, 34);
+}
+.darkgreen.active {
+    color: rgb(0, 100, 0);
+}
