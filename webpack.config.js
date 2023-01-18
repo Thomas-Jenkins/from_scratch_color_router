@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: [
@@ -7,7 +9,7 @@ module.exports = {
   ],
   output: {
     publicPath: '/',
-    path: __dirname + '/dist',
+    path: __dirname + '/build',
     filename: 'app.bundle.js',
     clean: true,
   },
@@ -34,13 +36,18 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           'style-loader',
-          'css-loader',
+          { loader: 'css-loader' },
         ]
       },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new CopyPlugin({
+      patterns: [
+        // Note that the "to" is relative to the output dir.
+        { from: 'public', to: '.' },
+      ],
+    }), new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
     new webpack.ProvidePlugin({
